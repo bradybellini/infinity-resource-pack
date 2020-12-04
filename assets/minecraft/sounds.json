@@ -1,5 +1,6 @@
 {
-    "song.bladerunner2049":{
+    "song.bladerunner2049": {
+	    "subtitle": "synth music plays",
 	    "sounds":[
 		    "random/bladerunner2049"
 		]
