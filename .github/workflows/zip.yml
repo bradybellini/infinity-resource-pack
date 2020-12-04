@@ -4,7 +4,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: montudor/action-zip@v0.1.1
+    - uses: actions/checkout@master
     - name: Archive Release
+      uses: montudor/action-zip@v0.1.1
       with:
         args: zip -qq -r infinity_resource_pack.zip .
