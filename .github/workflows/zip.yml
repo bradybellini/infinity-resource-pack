@@ -9,3 +9,7 @@ jobs:
       uses: montudor/action-zip@v0.1.1
       with:
         args: zip -qq -r infinity_resource_pack.zip .
+    - uses: actions/upload-artifact@v1
+      with:
+        name: infinity-resource-pack
+        path: ${{ github.workspace }}/infinity_resource_pack.zip
