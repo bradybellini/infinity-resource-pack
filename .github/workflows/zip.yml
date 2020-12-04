@@ -1,15 +1,34 @@
-name: Create Resource Pack Archive
 on: [push]
+
+name: Create Resource Pack & Upload to Working Release
+
 jobs:
   build:
+    name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Archive Release
-      uses: montudor/action-zip@v0.1.1
-      with:
-        args: zip -qq -r infinity_resource_pack.zip .
-    - uses: actions/upload-artifact@v1
-      with:
-        name: infinity-resource-pack
-        path: ${{ github.workspace }}/infinity_resource_pack.zip
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build project # This would actually build your project, using zip for an example artifact
+        run: |
+          zip .
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: ./infinity_resource_pack.zip
+          asset_name: infinity_resource_pack.zip
+          asset_content_type: application/zip
