@@ -1,6 +1,6 @@
-on: [push]
+name: Create Resource Pack
 
-name: Create Resource Pack & Upload to Working Release
+on: [push]
 
 jobs:
   build:
