@@ -1,0 +1,22 @@
+name: Create WIP Archive
+on: [push]
+jobs:
+  build:
+    name: Upload Release Asset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Pack
+        id: checkout_pack
+        uses: actions/checkout@v2
+      - name: Build project # This would actually build your project, using zip for an example artifact
+        run: |
+          zip -r infinity_resource_pack.zip .
+      - name: Upload zip to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: infinity_resource_pack.zip
+          asset_name: infinity_resource_pack.zip
+          tag: wip
+          overwrite: true
+          body: "WIP resource pack"
