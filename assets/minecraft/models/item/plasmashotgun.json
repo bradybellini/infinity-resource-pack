@@ -10797,7 +10797,7 @@
 		"ground": {
 			"rotation": [24, 21, 8],
 			"translation": [1.25, 9.25, 0],
-			"scale": [2, 2, 2]
+			"scale": [1.1, 1.1, 1.1]
 		},
 		"gui": {
 			"rotation": [10, 47, -27],
@@ -10810,7 +10810,7 @@
 		},
 		"fixed": {
 			"translation": [3.5, 4.5, -1.25],
-			"scale": [3, 3, 3]
+			"scale": [2, 2, 2]
 		}
 	},
 	"groups": [

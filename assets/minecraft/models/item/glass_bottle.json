@@ -4,6 +4,7 @@
     "layer0": "minecraft:item/glass_bottle"
   },
   "overrides": [
-    {"predicate": {"custom_model_data": 1}, "model": "item/stim"}
+    {"predicate": {"custom_model_data": 1}, "model": "item/stim"},
+	{"predicate": {"custom_model_data": 2}, "model": "item/plasmashotgun"}
   ]
 }
